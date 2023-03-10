@@ -17,6 +17,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use SoftDeleteTrait;
     use TimestampTrait;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
