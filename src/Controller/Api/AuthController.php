@@ -4,7 +4,7 @@ namespace App\Controller\Api;
 
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use FOS\RestBundle\View\View;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -15,8 +15,8 @@ class AuthController extends AbstractFOSRestController
     /**
      * @Rest\Post("/login", name="login")
      */
-    public function login(): JsonResponse
+    public function login(): View
     {
-        return $this->json([]);
+        return View::create();
     }
 }

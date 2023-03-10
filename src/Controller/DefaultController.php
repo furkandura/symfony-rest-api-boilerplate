@@ -1,26 +1,28 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller;
 
 use App\Type\Request\ExampleRequest;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\View\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 
-/**
- * @Rest\Route("/api/default", name="api.default.")
- */
+
 class DefaultController extends AbstractFOSRestController
 {
     /**
      * @Rest\Post("", name="index")
-     * @Rest\View()
      * @ParamConverter("exampleRequest", class="App\Type\Request\ExampleRequest", converter="fos_rest.request_body")
      */
     public function index(
-        ExampleRequest $exampleRequest
-    ): ExampleRequest
+        ExampleRequest $exampleRequest,
+        ConstraintViolationListInterface $validationErrors
+    ): View
     {
-        return $exampleRequest;
+        if ($validationErrors->count()) return View::create($validationErrors);
+
+        return View::create($exampleRequest);
     }
 }
