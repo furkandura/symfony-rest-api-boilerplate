@@ -11,7 +11,7 @@ trait SoftDeleteTrait
      * @ORM\Column(type="datetime", nullable=true)
      * @var DateTime|null
      */
-    private $deletedAt;
+    private DateTime $deletedAt;
 
     /**
      * @return DateTime|null

@@ -30,19 +30,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", unique=true)
      * @var string
      */
-    private $email;
+    private string $email;
 
     /**
      * @ORM\Column(type="json")
      * @var array
      */
-    private $roles = [];
+    private array $roles = [];
 
     /**
      * @ORM\Column(type="string")
      * @var string
      */
-    private $password;
+    private string $password;
 
     /**
      * @return int
